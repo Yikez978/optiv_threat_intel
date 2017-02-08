@@ -1,0 +1,36 @@
+<form>
+    <label>Threat Intel Index Search - Domains</label>
+
+    <!-- define master search template, with replacement tokens delimited with $ -->
+    <!--
+    <searchTemplate>index=$idx$ [search index=optiv earliest=-24h@h| stats count by dest_ip]</searchTemplate>
+    index=honeypot earliest=-7d [search index=optiv earliest=-3h| dedup dest_ip |rename dest_ip AS ip_addr | table ip_addr]-->
+    <searchTemplate>index=$idx$ [search index=optiv earliest=-72h| dedup dest| table dest] </searchTemplate>
+    <fieldset>
+        <!-- Define a simple dropdown form driven by a search -->
+        
+      
+        <input type="dropdown" token="idx">
+            <label>Select index</label>
+            <choice value="*">Any</choice>
+            <populatingSearch fieldForValue="index" fieldForLabel="index"><![CDATA[index=* | stats count by index]]></populatingSearch>
+        </input>
+
+        <input type="time" searchWhenChanged="true">
+           <default>
+             <earliest>-4h@h</earliest>
+             <latest>now</latest>
+           </default>
+        </input>
+
+    </fieldset>
+
+    <row>
+        <!-- output the results as a 50 row events view -->
+        <event>
+            <title>Results</title>
+            <option name="count">100</option>
+        </event>
+    </row>
+
+</form>

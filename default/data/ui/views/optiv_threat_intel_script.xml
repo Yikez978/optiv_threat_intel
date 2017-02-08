@@ -1,0 +1,28 @@
+<dashboard>
+   <label>Troubleshooting</label>
+   <row>
+   <html>
+   <center><img src="/static/app/optiv_threat_intel/optiv_troubleshooting.png" /></center>
+   </html>
+   </row>
+<row>
+    <panel>
+      <event>
+        <title>Latest Script Output</title>
+        <search>
+          <query>`optiv_index` sourcetype=exec earliest=-9h@h</query>
+        </search>
+        <option name="count">50</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">40</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">1</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <fields>[]</fields>
+      </event>
+    </panel>
+  </row>
+</dashboard>

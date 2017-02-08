@@ -1,0 +1,5 @@
+"dest_ip","threat_description",region,"threat_list_name"
+"162.144.149.195","_Spamming_US",Provo,"AlienVault_IP_Blocklist"
+"1.54.134.43","_Scanning_Host_VN","Ho_Chi_Minh_City","AlienVault_IP_Blocklist"
+"123.202.183.137","_Scanning_Host_HK","Central_District","AlienVault_IP_Blocklist"
+"104.239.230.19","_Scanning_Host_US","San_Antonio","AlienVault_IP_Blocklist"

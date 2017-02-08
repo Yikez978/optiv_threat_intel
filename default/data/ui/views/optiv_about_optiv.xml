@@ -1,0 +1,33 @@
+<!--<dashboard>-->
+
+<form refresh="1200" hideTitle="true" hideSplunkBar="false" hideFooter="true"> 
+  <label>About Optiv</label>
+  <row>
+  <html>
+      <h1>Our Company</h1>
+      	<p><font face="Arial">Optiv is the largest holistic pure-play cyber security solutions provider in North America. Our diverse and talented employees are committed to helping businesses, governments and educational institutions plan, build and run successful security programs through the right combination of products, services and solutions related to security program strategy, enterprise risk and consulting, threat and vulnerability management, enterprise incident management, security architecture and implementation, training, identity and access management, and managed security.</font></p>
+        <p>Created in 2015 as a result of the Accuvant and FishNet Security merger, Optiv has served more than 12,000 clients of various sizes across multiple industries, offers an extensive geographic footprint, and has premium partnerships with more than 300 of the leading security product manufacturers.</p>
+    <h1>Splunk Services</h1>
+    <p><font face="Arial">Optiv provides a wide range of services for Splunk products including resale, identification and selection, implementation and integration, optimization, and support.</font></p>
+    <p><font face="Arial">Services include:</font></p>
+	<ul>
+    	<li>Identification and Selection</li>
+        <li>Proof of Concept</li>
+	    <li>Design</li>
+	    <li>Quick Start </li>
+	    <li>Implementation</li>
+	    <li>Migration</li>
+	    <li>Optimization</li>
+	    <li>Health Check</li>
+	    <li>Custom Development</li>
+	    <li>Integration</li>
+	    <li>Upgrade</li>
+	    <li>Managed Security Services</li>
+    </ul>
+    <p><font face="Arial">To learn more, visit <a href="https://www.optiv.com">www.optiv.com</a> or contact us at (800) 574-0896 or info@accuvant.com.</font>
+</p>
+    
+    </html>
+  </row>
+</form>
+<!--</dashboard>-->

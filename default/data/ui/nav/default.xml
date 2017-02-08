@@ -1,0 +1,33 @@
+<nav search_view="search" color="#0057B8">
+  <collection label="Splash">
+     <view name="optiv_threat_intel_splash" default='true' /> 
+     <view name="optiv_threat_intel_detail" />
+  </collection>
+  <collection label="Correlate">
+     <collection label="Search by host">
+	 	<view name="optiv_threat_intel_host_search_dest_ip" />
+		<view name="optiv_threat_intel_host_search_dest" />
+		<view name="optiv_threat_intel_host_search_url" />
+	</collection>
+	 <collection label="Search by index">
+	 	<view name="optiv_threat_intel_index_search_dest_ip" />
+     	<view name="optiv_threat_intel_index_search_dest" />
+     	<view name="optiv_threat_intel_index_search_url" />
+     </collection>
+	 <collection label="Search by sourcetype">
+	 	<view name="optiv_threat_intel_sourcetype_search_dest_ip" />
+		<view name="optiv_threat_intel_sourcetype_search_dest" />
+		<view name="optiv_threat_intel_sourcetype_search_url" />
+	</collection>
+    <view name="optiv_threat_intel_ip_search" />
+    <view name="optiv_threat_intel_dest_search" /> 
+  </collection>
+  <collection label="Maps">
+     <view name="optiv_attack_map" />
+     <view name="optiv_viz_globe" />
+  </collection>
+  <view name="search" />
+  <view name="optiv_threat_intel_script" />
+  <view name="optiv_news" />
+  <view name="optiv_about_optiv" />
+</nav>

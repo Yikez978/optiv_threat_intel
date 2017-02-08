@@ -1,0 +1,32 @@
+<form>
+    <label>Threat Intel Index Search - Destination URLs</label>
+
+    <searchTemplate>index=$idx$ [search index=optiv earliest=-72h | dedup url | table url] </searchTemplate>
+    <fieldset>
+        <!-- Define a simple dropdown form driven by a search -->
+        
+      
+        <input type="dropdown" token="idx">
+            <label>Select index</label>
+            <choice value="*">Any</choice>
+            <populatingSearch fieldForValue="index" fieldForLabel="index"><![CDATA[index=* | stats count by index]]></populatingSearch>
+        </input>
+
+        <input type="time" searchWhenChanged="true">
+           <default>
+             <earliest>-4h@h</earliest>
+             <latest>now</latest>
+           </default>
+        </input>
+
+    </fieldset>
+
+    <row>
+        <!-- output the results as a 50 row events view -->
+        <event>
+            <title>Results</title>
+            <option name="count">100</option>
+        </event>
+    </row>
+
+</form>

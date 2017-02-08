@@ -1,0 +1,39 @@
+<!--<dashboard>-->
+
+<form refresh="1200" hideTitle="true" hideSplunkBar="false" hideFooter="true">
+  <label>Security Industry News</label>
+
+    <row>
+      <html>
+          <body bgcolor="#E6E6FA">
+        <center><img src="/static/app/optiv_threat_intel/optiv_news.png" /></center>
+     	 </body>	
+        </html>
+        
+    </row>
+    <row>
+     <panel>
+        <title>RSS Feeds</title>
+        <table>
+            <title>Drilldown on URL for details</title>
+            <search>
+		<query>index=optiv sourcetype=optiv_sec_rss desc=* title=* 
+            | where len(desc) > 75
+	    | dedup title url 
+            | sort 30 -_time
+	    | table _time title desc url
+		</query>
+            <earliestTime>-5d@d</earliestTime>
+            <latestTime>now</latestTime>
+            </search>	
+              <drilldown>
+                <condition field="url">
+                  <link>$click.value2|n$</link>
+                </condition>
+              </drilldown>
+        </table>
+   </panel>
+  </row>
+</form>
+
+<!--</dashboard>-->
