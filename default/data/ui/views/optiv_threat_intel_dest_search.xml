@@ -2,7 +2,7 @@
     <label>Threat Intel Domain Search</label>
 
     <!-- define master search template, with replacement tokens delimited with $ -->
-    <searchTemplate>`optiv_index` sourcetype=optiv_threat_list dest=$dstp$</searchTemplate>
+    <search>`optiv_index` sourcetype=optiv_threat_list dest=$dstp$</search>
     <fieldset>
         <!-- Define a simple dropdown form driven by a search -->
         <input type="text" token="dstp">

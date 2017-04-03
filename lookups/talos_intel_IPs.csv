@@ -1,5 +1,5 @@
 "dest_ip","threat_list_name"
-"173.254.216.66","talos_intel_IPs"
-"171.25.193.25","talos_intel_IPs"
-"171.25.193.20","talos_intel_IPs"
 "162.247.72.200","talos_intel_IPs"
+"141.138.141.208","talos_intel_IPs"
+"108.166.168.158","talos_intel_IPs"
+"104.237.152.195","talos_intel_IPs"

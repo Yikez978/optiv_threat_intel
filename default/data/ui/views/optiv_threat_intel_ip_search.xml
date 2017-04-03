@@ -2,12 +2,12 @@
     <label>Threat Intel IP Search</label>
 
     <!-- define master search template, with replacement tokens delimited with $ -->
-    <searchTemplate>`optiv_index` sourcetype=optiv_threat_list dest_ip=$dstp$</searchTemplate>
+    <search id="BaseSearch1"><query>`optiv_index` sourcetype=optiv_threat_list dest_ip=$dstp$</query></search>
     <fieldset>
         <!-- Define a simple dropdown form driven by a search -->
         <input type="text" token="dstp">
             <label>Enter IP Address xxx.xxx.xxx.xxx</label>
-            <choice value="*">Any</choice>
+            
         </input>
         <input type="time" searchWhenChanged="true">
            <default>
@@ -21,8 +21,11 @@
     <row>
         <!-- output the results as a 50 row events view -->
         <event>
+          <search base="BaseSearch1"><query>search *</query>     </search>
+            
             <title>Results</title>
             <option name="count">250</option>
+       
         </event>
     </row>
 </form>

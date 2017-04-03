@@ -41,7 +41,7 @@
       <text>This section is for email alert configuration. This feature is disabled by default. The index numbers match the ones defined at the top of this setup page.</text>
    </block>
    
-
+<!--
    <block title="Email alert - Index #1" endpoint="saved/searches/" entity="Optiv Threat List Hit on Destination IP Email Alert - Index 1">
       <text>Configure email alerting for the search: Optiv - Threat List Hit on Destination IP - Email Alert - Index #1</text>
     
@@ -137,6 +137,6 @@
       </input>
 
    </block>
-
+-->
  </setup>
 

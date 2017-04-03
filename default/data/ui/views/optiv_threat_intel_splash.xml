@@ -6,7 +6,7 @@
       <single>
         <title>Threat Lists Hits</title>
         <search>
-          <query>(`network_index_one` OR `network_index_two` OR `network_index_three`) dest_ip=* | lookup local=1 all_dest_ips.csv dest_ip OUTPUT threat_list_name, dest_ip  | search threat_list_name=* | dedup dest_ip | eval dest_ip=mvindex(dest_ip,0) | dnslookup reverse dest_ip hostname | table _time index sourcetype dest_ip host threat_list_name hostname | sort -_time | iplocation dest_ip | fields - lat - lon | stats count | where count > 0</query>
+          <query>(`network_index_one` OR `network_index_two` OR `network_index_three`) dest_ip=* | lookup local=1 all_dest_ips.csv dest_ip OUTPUT threat_list_name, dest_ip  | search threat_list_name=* | dedup dest_ip | eval dest_ip=mvindex(dest_ip,0) | lookup dnslookup clientip as src_ip OUTPUT clienthost as hostname | table _time index sourcetype dest_ip host threat_list_name hostname | sort -_time | iplocation dest_ip | fields - lat - lon | stats count | where count > 0</query>
           <earliest>-1h@h</earliest>
           <latest>now</latest>
 
@@ -71,7 +71,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
       <single>
@@ -94,7 +93,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
       <single>
@@ -120,7 +118,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -148,7 +145,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
       <single>
@@ -174,7 +170,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -204,7 +199,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
       <single>
@@ -227,7 +221,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -255,7 +248,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
       <single>
@@ -281,7 +273,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -317,7 +308,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -342,7 +332,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -367,7 +356,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -407,7 +395,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -435,7 +422,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>
@@ -463,7 +449,6 @@
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
         <option name="underLabel">This week</option>
-        <option name="linkView">search</option>
         <option name="drilldown">none</option>
       </single>
     </panel>

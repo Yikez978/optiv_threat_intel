@@ -1,6 +1,6 @@
 <form>
   <label>Threat Intel Index Search - Destination IPs</label>
-  <searchTemplate>(index=$idx$) dest_ip=*  | lookup local=1 all_dest_ips.csv dest_ip OUTPUT threat_list_name, dest_ip  | search threat_list_name=* | dedup dest_ip | eval dest_ip=mvindex(dest_ip,0) | dnslookup reverse dest_ip hostname | table index sourcetype dest_ip host threat_list_name hostname | iplocation dest_ip | fields - lat - lon</searchTemplate>
+  <search id="BaseSearch1"><query>(index=$idx$) dest_ip=*  | lookup local=1 all_dest_ips.csv dest_ip OUTPUT threat_list_name, dest_ip  | search threat_list_name=* | dedup dest_ip | eval dest_ip=mvindex(dest_ip,0) | lookup dnslookup clientip as src_ip OUTPUT clienthost as hostname | table index sourcetype dest_ip host threat_list_name hostname | iplocation dest_ip | fields - lat - lon</query></search>
   <fieldset>
     <!-- Define a simple dropdown form driven by a search -->
     <!--<input type="dropdown" token="idx">-->
@@ -8,7 +8,6 @@
       <label>Select index(es)</label>
       <choice value="*">Any</choice>
       <search>
-        <!--<query>index=* | stats count by index</query>-->
         <query>| eventcount summarize=false index=* | search NOT index=summary NOT index=optiv NOT index=history NOT index=firedalerts | dedup index | fields index</query>
       </search>
       <fieldForLabel>index</fieldForLabel>
@@ -26,14 +25,11 @@
 
   <row>
     <!-- output the results as a 50 row events view -->
+    
     <table id="master">
+      <search base="BaseSearch1"><query>search *</query>     </search>
       <title>Results</title>
       <option name="count">100</option>
-      <!--  
-      <earliestTime>-1d@d</earliestTime>
-      <latestTime>now</latestTime>
-	  -->
-      <!-- Set the type of of drilldown, since we will always consume the same field, use row-->
       <option name="drilldown">row</option>
       <drilldown>
         <!-- Use set to specify the new token to be created.
@@ -48,19 +44,12 @@
 
   
   <row>
-    <!-- depends is the way we tell the content to only show when the token has a value.
-             Hint: use comma separated values if the element requires more than one token. -->
     <event id="detail1" depends="$dstp$">
       <title>$idx$ Index Detail: $dstp$</title>
-      <searchTemplate>index=$idx$ dest_ip=$dstp$</searchTemplate>
-      <!--
-      <earliestTime>-1d@d</earliestTime>
-      <latestTime>now</latestTime>
-	  -->
+      <search base="BaseSearch1"><query>index=$idx$ dest_ip=$dstp$</query>     </search>
     </event>
   </row>
-  <row>
-  </row>
+
   
   
 	<row>
@@ -76,14 +65,8 @@
              Hint: use comma separated values if the element requires more than one token. -->
     <event id="detail2" depends="$dstp$">
       <title>Optiv Threat List Detail: $dstp$</title>
-      <searchTemplate>index=optiv dest_ip=$dstp$</searchTemplate>
-      <!--
-      <earliestTime>-1d@d</earliestTime>
-      <latestTime>now</latestTime>
-	  -->
+      <search base="BaseSearch1"><query>`optiv_index` dest_ip=$dstp$</query>     </search>
     </event>
   </row>
 
 </form>
-
-

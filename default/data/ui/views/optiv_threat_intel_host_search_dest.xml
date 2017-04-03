@@ -2,9 +2,7 @@
     <label>Threat Intel Host Search - Domains</label>
 
     <!-- define master search template, with replacement tokens delimited with $ -->
-    <!--<searchTemplate>index=* host=$hst$ [search index=optiv earliest=-24h@h | stats count by dest_ip]</searchTemplate>
-   index=honeypot earliest=-7d [search index=optiv earliest=-3h| dedup dest_ip |rename dest_ip AS ip_addr | table ip_addr]-->
-    <searchTemplate>index=* host=$hst$ [search `optiv_index` earliest=-72h | dedup dest | table dest] </searchTemplate>
+    <search id="BaseSearch1"><query>index=* host=$hst$ [search `optiv_index` earliest=-72h | dedup dest | table dest] </query></search>
     <fieldset>
         <!-- Define a simple dropdown form driven by a search -->
         <input type="dropdown" token="hst">
@@ -24,6 +22,7 @@
     <row>
         <!-- output the results as a 50 row events view -->
         <event>
+          <search base="BaseSearch1"><query>search *</query>     </search>
             <title>Results</title>
             <option name="count">250</option>
         </event>

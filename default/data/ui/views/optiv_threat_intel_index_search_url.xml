@@ -1,7 +1,7 @@
 <form>
     <label>Threat Intel Index Search - Destination URLs</label>
 
-    <searchTemplate>index=$idx$ [search index=optiv earliest=-72h | dedup url | table url] </searchTemplate>
+    <search id="BaseSearch1"><query>index=$idx$ [search `optiv_index` earliest=-72h | dedup url | table url] </query></search>
     <fieldset>
         <!-- Define a simple dropdown form driven by a search -->
         
@@ -24,6 +24,7 @@
     <row>
         <!-- output the results as a 50 row events view -->
         <event>
+          <search base="BaseSearch1"><query>search *</query>     </search>
             <title>Results</title>
             <option name="count">100</option>
         </event>

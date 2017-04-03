@@ -5,7 +5,7 @@
       <table>
         <title>Top Attacker IPs</title>
         <search>
-          <query>`optiv_index` earliest=-24h@h | rename dest_ip AS src_ip  | top 50 src_ip | dnslookup reverse src_ip hostname | table src_ip hostname count | iplocation src_ip | fields - lat - lon</query>
+          <query>`optiv_index` earliest=-24h@h | rename dest_ip AS src_ip  | top 50 src_ip | lookup dnslookup clientip as src_ip OUTPUT clienthost as hostname | table src_ip hostname count | iplocation src_ip | fields - lat - lon</query>
         </search>
         <option name="wrap">true</option>
         <option name="rowNumbers">true</option>
@@ -81,7 +81,7 @@
       <table>
         <title>IPs that are on more than 3 threat lists</title>
         <search>
-          <query>`optiv_index` earliest=-12h@h  | stats dc(threat_list_name) AS num_threat_lists values(threat_list_name) AS "Threat list names" by dest_ip | mvcombine delim="," "Threat list names" | where num_threat_lists > 3 | dnslookup reverse dest_ip hostname  | table num_threat_lists "Threat list names" dest_ip hostname  | sort 100 - num_threat_lists hostname  | iplocation dest_ip | fields - lat - lon</query>
+          <query>`optiv_index` earliest=-12h@h  | stats dc(threat_list_name) AS num_threat_lists values(threat_list_name) AS "Threat list names" by dest_ip | mvcombine delim="," "Threat list names" | where num_threat_lists > 3 | lookup dnslookup clientip as src_ip OUTPUT clienthost as hostname  | table num_threat_lists "Threat list names" dest_ip hostname  | sort 100 - num_threat_lists hostname  | iplocation dest_ip | fields - lat - lon</query>
         </search>
         <option name="wrap">true</option>
         <option name="rowNumbers">true</option>
