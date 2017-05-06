@@ -49,31 +49,6 @@
   <row>
     <panel>
       <single>
-        <title>Talos Intel</title>
-        <search>
-          <query>`optiv_index` threat_list_name=talos_intel_IPs|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
-          <earliest>-7d</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">percent</option>
-        <option name="trendInterval">-7d</option>
-        <option name="colorBy">trend</option>
-        <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[160000,190000,200000,210000]</option>
-        <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
-        <option name="numberPrecision">0</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="showSparkline">1</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-        <option name="underLabel">This week</option>
-        <option name="drilldown">none</option>
-      </single>
-      <single>
         <title>AlienVault</title>
         <search>
           <query>index=summary "alienvault_dest_ip_count=*" | where alienvault_dest_ip_count&gt;0  | timechart avg(alienvault_dest_ip_count) AS alienvault_dest_ip_count span=1d | fillnull value=NULL| rangemap field=alienvault_dest_ip_count none=0-1000 low=1001-146149 guarded=146150-165000 elevated=180000-190000 high=190001-200000 severe=200001-999999 default=none</query>
@@ -96,9 +71,9 @@
         <option name="drilldown">none</option>
       </single>
       <single>
-        <title>Binary Defense</title>
+        <title>Talos Intel</title>
         <search>
-          <query>index=summary "binary_defense_dest_ip_count=*" | where binary_defense_dest_ip_count&gt;0  | timechart avg(binary_defense_dest_ip_count) AS binary_defense_dest_ip_count span=1d | fillnull value=NULL| rangemap field=binary_defense_dest_ip_count none=0-1000 low=1001-146149 guarded=146150-165000 elevated=180000-190000 high=190001-200000 severe=200001-999999 default=none</query>
+          <query>`optiv_index` threat_list_name=talos_intel_IPs|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -109,9 +84,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -123,9 +95,31 @@
     </panel>
     <panel>
       <single>
-        <title>Tor Exit Nodes</title>
+        <title>CI Army Badguys</title>
         <search>
-          <query>`optiv_index` threat_list_name=TorExitNodes|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
+          <query>index=summary "ci_army_badguys_dest_ip_count=*" | where ci_army_badguys_dest_ip_count&gt;0  | timechart avg(ci_army_badguys_dest_ip_count) AS ci_army_badguys_dest_ip_count span=1d | fillnull value=NULL| rangemap field=ci_army_badguys_dest_ip_count</query>
+          <earliest>-7d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">percent</option>
+        <option name="trendInterval">-7d</option>
+        <option name="colorBy">trend</option>
+        <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[12000,15000,17000,20000]</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="showSparkline">1</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="underLabel">This week</option>
+        <option name="drilldown">none</option>
+      </single>
+      <single>
+        <title>Ransomware Abuse.CH IPs</title>
+        <search>
+          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_IPs | timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -136,9 +130,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -147,6 +138,11 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
+      
+    </panel>
+  </row>
+  <row>
+    <panel>
       <single>
         <title>Emerging Threats</title>
         <search>
@@ -161,9 +157,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -172,14 +165,10 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
-    </panel>
-  </row>
-  <row>
-    <panel>
       <single>
-        <title>Malc0de</title>
+        <title>Tor Exit Nodes</title>
         <search>
-          <query>`optiv_index` threat_list_name=malc0de_IPs|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
+          <query>`optiv_index` threat_list_name=TorExitNodes|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -190,9 +179,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -201,6 +187,9 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
+      
+    </panel>
+    <panel>
       <single>
         <title>Bambenek OSINT</title>
         <search>
@@ -223,12 +212,10 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
-    </panel>
-    <panel>
       <single>
-        <title>Ransomware Abuse.CH IPs</title>
+        <title>Malc0de</title>
         <search>
-          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_IPs | timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
+          <query>`optiv_index` threat_list_name=malc0de_IPs|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -239,9 +226,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -250,31 +234,7 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
-      <single>
-        <title>Open Blocklist</title>
-        <search>
-          <query>`optiv_index` threat_list_name=OpenBL_1day|timechart dc(dest_ip) span=1d | fillnull value=NULL</query>
-          <earliest>-7d</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">percent</option>
-        <option name="trendInterval">-7d</option>
-        <option name="colorBy">trend</option>
-        <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[160000,190000,200000,210000]</option>
-        <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
-        <option name="numberPrecision">0</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="showSparkline">1</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-        <option name="underLabel">This week</option>
-        <option name="drilldown">none</option>
-      </single>
+      
     </panel>
   </row>
   <row>
@@ -313,9 +273,9 @@
     </panel>
     <panel>
       <single>
-        <title>Malware Domains</title>
+        <title>Ransomware Abuse.CH Domains</title>
         <search>
-          <query>`optiv_index` threat_list_name=Malware_Domains | timechart dc(dest) span=1d | fillnull value=NULL</query>
+          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_domains | timechart dc(dest) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -334,12 +294,13 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
+      
     </panel>
     <panel>
       <single>
-        <title>Ransomware Abuse.CH Domains</title>
+        <title>Malware Domains</title>
         <search>
-          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_domains | timechart dc(dest) span=1d | fillnull value=NULL</query>
+          <query>`optiv_index` threat_list_name=Malware_Domains | timechart dc(dest) span=1d | fillnull value=NULL</query>
           <earliest>-7d</earliest>
           <latest>now</latest>
         </search>
@@ -386,9 +347,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -397,6 +355,31 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
+    </panel>
+     <panel>
+    <single>
+        <title>Ransomware Abuse.CH URLs</title>
+        <search>
+          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_URLs | timechart dc(url) span=1d | fillnull value=NULL</query>
+          <earliest>-7d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">percent</option>
+        <option name="trendInterval">-7d</option>
+        <option name="colorBy">trend</option>
+        <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[160000,190000,200000,210000]</option>
+        <option name="colorMode">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="showSparkline">1</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="underLabel">This week</option>
+        <option name="drilldown">none</option>
+      </single>
+      
     </panel>
     <panel>
       <single>
@@ -413,9 +396,6 @@
         <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[160000,190000,200000,210000]</option>
         <option name="colorMode">none</option>
-        <!--
-                                  <option name="colorMode">block</option>
-		-->
         <option name="numberPrecision">0</option>
         <option name="showTrendIndicator">1</option>
         <option name="showSparkline">1</option>
@@ -424,33 +404,8 @@
         <option name="underLabel">This week</option>
         <option name="drilldown">none</option>
       </single>
-    </panel>
-    <panel>
-      <single>
-        <title>Ransomware Abuse.CH URLs</title>
-        <search>
-          <query>`optiv_index` threat_list_name=ransomware_Abuse_CH_URLs | timechart dc(url) span=1d | fillnull value=NULL</query>
-          <earliest>-7d</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">percent</option>
-        <option name="trendInterval">-7d</option>
-        <option name="colorBy">trend</option>
-        <option name="rangeColors">["0x0E31EB","0x6db7c6","0xf7bc38","0xf58f39","0xd93f3c"]</option>
-        <option name="rangeValues">[160000,190000,200000,210000]</option>
-        <option name="colorMode">none</option>
-        <!--
-                                               <option name="colorMode">block</option>
-                -->
-        <option name="numberPrecision">0</option>
-        <option name="showTrendIndicator">1</option>
-        <option name="showSparkline">1</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-        <option name="underLabel">This week</option>
-        <option name="drilldown">none</option>
-      </single>
+   
+      
     </panel>
   </row>
 </dashboard>
